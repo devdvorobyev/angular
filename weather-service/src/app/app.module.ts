@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconRegistry } from "@angular/material/icon";
 /* Кастомные компоненты */
 import { LayoutComponent } from './layout/layout.component';
 import { AuthorizationComponent } from './layout/pages/authorization/authorization.component';
@@ -40,4 +41,11 @@ import { FooterComponent } from './layout/footer/footer.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private matIconRegistry: MatIconRegistry){
+    this.matIconRegistry.addSvgIcon(
+      `icon-cloudy-weather`,
+      `../../assets/icon/icon-cloudy-weather.svg`
+    );
+  }
+ }
