@@ -1,18 +1,40 @@
 <div class="auth-container">
     <div class="auth-dialog">
-        <mat-icon svgIcon="icon-cloudy-weather"></mat-icon>
         <div class="logo-login">
-
+            <!-- <mat-icon svgIcon="cloudy-weather" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon> -->
+            <div class="logo-text">
+                lallala
+            </div>
         </div>
-        <div id="login">
+        <form class="login-form">
+            <mat-form-field id="login">
+                <mat-label>E-mail</mat-label>
+                <input matInput placeholder="your-email@example.com" [formControl]="email" required>
+                @if (email.invalid) {
+                    <mat-error>{{getErrorMessage()}}</mat-error>
+                }
+            </mat-form-field>
+          
+            <mat-form-field id="password">
+              <mat-label>Пароль</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" required>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+        </form>
+        <!-- <div id="login">
 
         </div>
         <div id="password">
 
-        </div>
+        </div> -->
         <div id="login-button">
-            <button mat-raised-button>
-                Basic
+            <button mat-raised-button color="primary" class="auth">
+                Авторизоваться
+            </button>
+            <button mat-raised-button color="primary" class="registry">
+                Регистрация
             </button>
         </div>
     </div>
